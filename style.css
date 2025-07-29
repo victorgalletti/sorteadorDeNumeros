@@ -1,0 +1,179 @@
+/* Reset e Estilos Gerais */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: #EFEFEF;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: #1e2124; /* Cor de fundo específica solicitada */
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+/* Container Principal */
+.container {
+    width: 100%;
+    max-width: 800px;
+    min-height: 50vh;
+    background-color: #2c2f33; /* Sombra escura para o cartão principal */
+    border-radius: 24px;
+    padding: 2rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #4f545c;
+}
+
+.container__conteudo {
+    width: 100%;
+}
+
+.container__informacoes {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Tipografia */
+h1 {
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.container__texto-cor {
+    color: #e0e425; /* Cor de destaque do tema */
+}
+
+.texto__paragrafo {
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+/* Seção dos Campos de Input */
+.container__campo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+}
+
+.container__input {
+    width: 150px;
+    height: 60px;
+    border-radius: 8px;
+    background-color: #1e2124;
+    border: 1px solid #4f545c;
+    color: #EFEFEF;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+.container__input::-webkit-outer-spin-button,
+.container__input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Seção dos Botões */
+.container__botoes {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    margin-top: 1rem;
+}
+
+.container__botao,
+.container__botao-desabilitado {
+    border-radius: 12px;
+    padding: 16px 24px;
+    font-size: 1.5rem;
+    width: 100%;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.container__botao {
+    background: #e0e425; 
+    color: #1a1a1a;      
+}
+
+.container__botao:hover {
+    background: #b3b71e; /* Tom mais escuro para o efeito hover */
+    transform: translateY(-2px)
+}
+
+.container__botao-desabilitado {
+    background: #4f545c; /* Cor do botão desabilitado/secundário */
+    color: #96989b;
+    cursor: not-allowed;
+}
+
+/* Seção de Resultado */
+#resultado {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+#resultado .texto__paragrafo {
+    font-size: 1.25rem;
+    color: #b9bbbe;
+    padding: 1rem;
+    background-color: #1e2124;
+    border-radius: 8px;
+    word-wrap: break-word;
+}
+
+/* Ajustes para Telas Menores (Responsivo) */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 1.5rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .texto__paragrafo {
+        font-size: 1.2rem;
+    }
+
+    .container__campo {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+    }
+
+    .container__input {
+        width: 100%;
+    }
+
+    .container__botoes {
+        flex-direction: column;
+    }
+
+    .container__botao, .container__botao-desabilitado {
+        font-size: 1.2rem;
+    }
+}
+
+
+
+
+
+
