@@ -107,6 +107,7 @@ h1 {
 /* Seção dos Botões */
 .container__botoes {
     display: flex;
+    flex-direction: row;
     gap: 1em;
     margin-top: 0.5rem;
 }
@@ -154,6 +155,7 @@ h1 {
     padding: 1rem;
     background-color: var(--cor-fundo-principal);
     border-radius: 8px;
+    word-wrap: break-word;
 }
 
 /* Seção de Contatos */
