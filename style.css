@@ -14,6 +14,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: 1rem;
+    flex-direction: column;
 }
 
 /* Container Principal */
@@ -22,7 +23,7 @@ body {
     max-width: 800px;
     min-height: 50vh;
     background-color: #2c2f33; /* Sombra escura para o cartão principal */
-    border-radius: 24px;
+    border-radius: 6px;
     padding: 2rem 3rem;
     display: flex;
     align-items: center;
@@ -37,20 +38,31 @@ body {
 .container__informacoes {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.2rem;
 }
 
 /* Tipografia */
 h1 {
-    font-family: 'Chakra Petch', sans-serif;
+    font-family: 'Inconsolata', monospace; 
     font-size: 3.5rem;
     font-weight: 700;
     text-align: center;
     margin-bottom: 2.5rem;
+    text-transform: uppercase; 
+}
+
+.container__texto {
+    line-height: 1.5;
 }
 
 .container__texto-cor {
     color: #e0e425; /* Cor de destaque do tema */
+    font-family: 'Inconsolata', monospace; 
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    text-transform: uppercase; 
 }
 
 .texto__paragrafo {
@@ -63,7 +75,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
     gap: 1rem;
 }
 
@@ -92,7 +104,7 @@ h1 {
     display: flex;
     flex-direction: row;
     gap: 1em;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
 }
 
 .container__botao,
@@ -131,11 +143,95 @@ h1 {
 
 #resultado .texto__paragrafo {
     font-size: 1.25rem;
+    display: inline-block; 
+    line-height: 1.5; 
     color: #b9bbbe;
     padding: 1rem;
     background-color: #1e2124;
     border-radius: 8px;
     word-wrap: break-word;
+}
+
+/* --- Seção de Info e Card --- */
+.info-section {
+    width: 100%;
+    max-width: 400px; 
+    margin: 4rem auto 0.1rem auto; 
+    text-align: center;
+    white-space: nowrap;
+}
+
+.info-section h2 {
+    font-size: 1.5rem; 
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #EFEFEF;
+}
+
+.cards-container {
+    text-align: left;
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    background-color: #2c2f33;
+    border: 1px solid #4f545c;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    text-align: left; /* Garante alinhamento à esquerda dentro do card */
+    width: 320px;  /* Adicione esta linha */
+}
+
+/* Estilo para cada linha de contato (ícone + texto) */
+.contact-entry {
+    display: flex;
+    align-items: center;
+    background-color: #1e2124; /* Fundo escuro como no exemplo */
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+    white-space: nowrap;
+}
+
+.contact-icon {
+    font-size: 1.2rem;
+    margin-right: 0.35rem;
+    margin-left: -0.1rem;
+    color: #96989b; /* Cor cinza para os ícones */
+}
+
+.contact-text {
+    color: #5865F2; 
+    text-decoration: none;
+    font-weight: bold;
+}
+.contact-text a {
+    color: #5865F2; /* Cor azul para a palavra "GitHub" */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-text a:hover {
+    text-decoration: underline;
+}
+
+.nickname {
+    color: #d4bf1f; /* Cor amarela para o seu nickname */
+    font-family: 'Inconsolata', monospace; 
+    padding-left: 0.2rem;
+}
+
+/* Descrição final no card */
+.card-description {
+    margin-top: 1rem;
+    color: #b9bbbe;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    text-align: center;
+    white-space: normal; 
 }
 
 /* Ajustes para Telas Menores (Responsivo) */

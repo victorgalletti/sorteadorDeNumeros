@@ -1,53 +1,77 @@
-function geradorNumeros() {
-    // Obtém os valores dos inputs
-    const quantidade = document.getElementById('quantidade').value;
-    const de = parseInt(document.getElementById('de').value);
-    const ate = parseInt(document.getElementById('ate').value);
-
-    // Valida os inputs
-    if (quantidade <= 0 || de >= ate) {
-        alert('Por favor, insira valores válidos.');
+function sortear() {
+    let quantidade = parseInt(document.getElementById('quantidade').value);
+    let de = parseInt(document.getElementById('de').value);
+    let ate = parseInt(document.getElementById('ate').value);
+    
+    // Se a resposta for 'false' (!true), a função para.
+    if (!validarCampos(quantidade, de, ate)) {
         return;
     }
 
-    // Gera os números aleatórios
-    const numeros = [];
+    let numerosSorteados = [];
     for (let i = 0; i < quantidade; i++) {
-        let numero;
-        do {
-            numero = Math.floor(Math.random() * (ate - de + 1)) + de;
-        } while (numeros.includes(numero)); // Garante que o número não seja repetido
-        numeros.push(numero);
+        let numero = gerarNumeros(de, ate);
+        while (numerosSorteados.includes(numero)) {
+            numero = gerarNumeros(de, ate);
+        }
+        numerosSorteados.push(numero);
     }
-
-    // Exibe os números gerados
-    document.getElementById('resultado').textContent = `Números sorteados: ${numeros.join(', ')}`;
+    let resultado = document.getElementById('resultado');
+    resultado.innerHTML = '<label class="texto__paragrafo">Números sorteados:  '+ numerosSorteados + '</label>';
+    alterarStatusReiniciar();
 }
 
-function sortear() {
-    // Desabilita o botão enquanto o sorteio está em andamento
-    const botao = document.getElementById('botao');
-    botao.disabled = true;
-    botao.classList.add('container__botao-desabilitado');
+function gerarNumeros(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
-    // Gera os números após um pequeno atraso para simular o sorteio
-    setTimeout(() => {
-        geradorNumeros();
-        // Reabilita o botão após o sorteio
-        botao.disabled = false;
-        botao.classList.remove('container__botao-desabilitado');
-    }, 1000); // Atraso de 1 segundo
+function alterarStatusReiniciar() {
+    let botaoReiniciar = document.getElementById('btn-reiniciar');
+    if (botaoReiniciar.classList.contains('container__botao-desabilitado')) {
+        botaoReiniciar.classList.remove('container__botao-desabilitado');
+        botaoReiniciar.classList.add('container__botao');
+    } 
 }
 
 function reiniciar() {
-    // Limpa o resultado e os inputs
-    document.getElementById('resultado').textContent = '';
-    document.getElementById('quantidade').value = '';
-    document.getElementById('de').value = '';
-    document.getElementById('ate').value = '';      
+    let botao = document.getElementById('btn-reiniciar');
+    if (botao.classList.contains('container__botao-desabilitado')) {
+        return; // Para a execução da função se o botão estiver desabilitado
+    } else {
+        document.getElementById('quantidade').value = '';
+        document.getElementById('de').value = '';
+        document.getElementById('ate').value = '';
+        document.getElementById('resultado').innerHTML = '<label class="texto__paragrafo">Números sorteados: Nenhum até agora!</label>';
+    }
+    if (document.getElementById('btn-reiniciar').classList.contains('container__botao')) {
+        document.getElementById('btn-reiniciar').classList.remove('container__botao');
+        document.getElementById('btn-reiniciar').classList.add('container__botao-desabilitado');
+    }
+}
 
-    // Reabilita o botão
-    const botao = document.getElementById('botao');     
-    botao.disabled = false;
-    botao.classList.remove('container__botao-desabilitado');       
+function validarCampos(quantidade, de, ate) {
+    let resultado = document.getElementById('resultado'); 
+    const limiteFixo = 50; 
+
+    if (isNaN(quantidade) || isNaN(de) || isNaN(ate)) {
+        resultado.innerHTML = '<label class="texto__paragrafo">Por favor, preencha todos os campos com números válidos.</label>';
+        return false;
+    }
+
+    if (quantidade > limiteFixo) {
+        resultado.innerHTML = '<label class="texto__paragrafo">A quantidade máxima de números para sortear é ' + limiteFixo + '.</label>';
+        return false; 
+    }
+
+    if (de >= ate) {
+        resultado.innerHTML = '<label class="texto__paragrafo">O campo "Do número" deve ser menor que o campo "Até o número".</label>';
+        return false; 
+    }
+
+    if (quantidade > (ate - de + 1)) {
+        resultado.innerHTML = '<label class="texto__paragrafo">A quantidade de números a sortear não pode ser maior que o intervalo disponível.</label>';
+        return false; 
+    }
+
+    return true;
 }
