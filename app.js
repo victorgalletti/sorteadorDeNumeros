@@ -17,7 +17,7 @@ function sortear() {
         numerosSorteados.push(numero);
     }
     let resultado = document.getElementById('resultado');
-    resultado.innerHTML = '<label class="texto__paragrafo">Números sorteados:  '+ numerosSorteados + '</label>';
+    resultado.innerHTML = '<label class="texto__paragrafo">Números sorteados:  '+ numerosSorteados.join(', ') + '</label>';
     alterarStatusReiniciar();
 }
 
@@ -51,7 +51,7 @@ function reiniciar() {
 
 function validarCampos(quantidade, de, ate) {
     let resultado = document.getElementById('resultado'); 
-    const limiteFixo = 50; 
+    const limiteFixo = 10000; 
 
     if (isNaN(quantidade) || isNaN(de) || isNaN(ate)) {
         resultado.innerHTML = '<label class="texto__paragrafo">Por favor, preencha todos os campos com números válidos.</label>';

@@ -1,34 +1,49 @@
-/* Reset e Estilos Gerais */
+/* --- 1. CORES EM ROOT --- */
+:root {
+    --cor-fundo-principal: #1e2124;
+    --cor-container: #2c2f33;
+    --cor-borda: #4f545c;
+    --cor-texto-principal: #EFEFEF;
+    --cor-texto-secundario: #b9bbbe;
+    --cor-texto-label: #96989b;
+    --cor-amarelo-destaque: #e0e425;
+    --cor-amarelo-hover: #b3b71e;
+    --cor-texto-botao: #1a1a1a;
+    --cor-botao-desabilitado: #4f545c;
+    --cor-link-azul: #5865F2;
+}
+
+/* Reset e Estilos Globais */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    color: #EFEFEF;
-    font-family: 'Inter', sans-serif;
 }
 
 body {
-    background: #1e2124; /* Cor de fundo específica solicitada */
-    height: 100vh;
+    background: var(--cor-fundo-principal);
+    color: var(--cor-texto-principal);
+    font-family: 'Inter', sans-serif;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 1rem;
-    flex-direction: column;
+    min-height: 100vh;
+    padding: 2rem 1rem; 
+    gap: 4rem;
 }
 
-/* Container Principal */
+/* Container Principal do Sorteador */
 .container {
     width: 100%;
     max-width: 800px;
-    min-height: 50vh;
-    background-color: #2c2f33; /* Sombra escura para o cartão principal */
+    background-color: var(--cor-container);
     border-radius: 6px;
     padding: 2rem 3rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #4f545c;
+    border: 1px solid var(--cor-borda);
 }
 
 .container__conteudo {
@@ -51,18 +66,9 @@ h1 {
     text-transform: uppercase; 
 }
 
-.container__texto {
-    line-height: 1.5;
-}
-
 .container__texto-cor {
-    color: #e0e425; /* Cor de destaque do tema */
-    font-family: 'Inconsolata', monospace; 
-    font-size: 3.5rem;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 2.5rem;
-    text-transform: uppercase; 
+    color: var(--cor-amarelo-destaque);
+    font-family: 'Inconsolata', monospace;
 }
 
 .texto__paragrafo {
@@ -83,13 +89,12 @@ h1 {
     width: 150px;
     height: 60px;
     border-radius: 8px;
-    background-color: #1e2124;
-    border: 1px solid #4f545c;
-    color: #EFEFEF;
+    background-color: var(--cor-fundo-principal);
+    border: 1px solid var(--cor-borda);
+    color: var(--cor-texto-principal);
     text-align: center;
     font-size: 1.5rem;
     font-weight: 700;
-    appearance: textfield;
     -moz-appearance: textfield;
 }
 
@@ -102,7 +107,6 @@ h1 {
 /* Seção dos Botões */
 .container__botoes {
     display: flex;
-    flex-direction: row;
     gap: 1em;
     margin-top: 0.5rem;
 }
@@ -120,18 +124,18 @@ h1 {
 }
 
 .container__botao {
-    background: #e0e425; 
-    color: #1a1a1a;      
+    background: var(--cor-amarelo-destaque);
+    color: var(--cor-texto-botao);
 }
 
 .container__botao:hover {
-    background: #b3b71e; /* Tom mais escuro para o efeito hover */
-    transform: translateY(-2px)
+    background: var(--cor-amarelo-hover);
+    transform: translateY(-2px);
 }
 
 .container__botao-desabilitado {
-    background: #4f545c; /* Cor do botão desabilitado/secundário */
-    color: #96989b;
+    background: var(--cor-botao-desabilitado);
+    color: var(--cor-texto-label);
     cursor: not-allowed;
 }
 
@@ -142,17 +146,18 @@ h1 {
 }
 
 #resultado .texto__paragrafo {
+    display: inline-block;
+    width: 100%;
     font-size: 1.25rem;
-    display: inline-block; 
     line-height: 1.5; 
-    color: #b9bbbe;
+    color: var(--cor-texto-secundario);
     padding: 1rem;
-    background-color: #1e2124;
+    background-color: var(--cor-fundo-principal);
     border-radius: 8px;
-    word-wrap: break-word;
+    word-break: break-all; 
 }
 
-/* --- Seção de Info e Card --- */
+/* Seção de Contatos */
 .info-section {
     width: 100%;
     max-width: 400px; 
@@ -183,12 +188,11 @@ h1 {
     width: 320px;  /* Adicione esta linha */
 }
 
-/* Estilo para cada linha de contato (ícone + texto) */
 .contact-entry {
     display: flex;
     align-items: center;
     background-color: #1e2124; /* Fundo escuro como no exemplo */
-    padding: 0.8rem 1rem;
+    padding: 0.8rem 0.6rem;
     border-radius: 8px;
     font-family: 'Courier New', Courier, monospace;
     font-size: 0.85rem;
@@ -234,25 +238,27 @@ h1 {
     white-space: normal; 
 }
 
-/* Ajustes para Telas Menores (Responsivo) */
+
+/* --- 3. CSS DE RESPONSIVIDADE ATUALIZADO --- */
 @media screen and (max-width: 768px) {
+    body {
+        gap: 2rem;
+    }
+    
     .container {
         padding: 1.5rem;
     }
 
     h1 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
         margin-bottom: 2rem;
-    }
-
-    .texto__paragrafo {
-        font-size: 1.2rem;
     }
 
     .container__campo {
         flex-direction: column;
         align-items: stretch;
         gap: 0.5rem;
+        text-align: center;
     }
 
     .container__input {
@@ -263,13 +269,8 @@ h1 {
         flex-direction: column;
     }
 
-    .container__botao, .container__botao-desabilitado {
+    .info-section h2 {
         font-size: 1.2rem;
+        white-space: normal; /* Permite que o título quebre em telas menores */
     }
 }
-
-
-
-
-
-
